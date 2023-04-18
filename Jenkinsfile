@@ -1,1 +1,24 @@
-checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '73348160-2876-4fbd-b2fa-cc95d7a90b32', url: 'https://github.com/bhatteju/maven.git']])
+pipeline {
+    agent any
+    stages {
+        stage('Example') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                //submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                    string(name: 'Password', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
+
+            steps {
+                echo "Hello, ${PERSON}, nice to meet you."
+                echo "Hello, ${Password}, nice to meet you."
+            }
+        }
+      
+        
+        
+    }
+}
