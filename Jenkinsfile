@@ -20,7 +20,7 @@ stages{
     stage('readxml'){
       steps{
         script{
-        readxml=readMavenPom file: 'sample_java/pom.xml';
+        readxml=readMavenPom file: '';
         echo "the name is : ${readxml.name}"
         }
       }}
