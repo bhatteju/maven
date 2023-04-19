@@ -1,3 +1,4 @@
+properties([parameters([choice(choices: ['clean'], name: 'choices')])])
 pipeline {
   agent any
   tools {
