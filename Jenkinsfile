@@ -1,4 +1,13 @@
-
+def readxml;
+node{
+    stage('checking from scm'){
+        checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '73348160-2876-4fbd-b2fa-cc95d7a90b32', url: 'https://github.com/bhatteju/maven.git']])
+    }
+    stage('readxml'){
+        readxml=readMavenPom file: 'sample_java/pom.xml';
+        echo "the name is : ${readxml.name}"
+    }
+}
 pipeline {
   agent any
   tools {
